@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Run Rubocop when commit
 
-Things you may want to cover:
+Copy the following code into .git/hooks/pre-commit and ensure this file is an executable.
 
-* Ruby version
+```ruby
+#!/bin/bash
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+files=$(git status -s | grep -E 'A|M' | awk '{print $2}')
+files="$files $(git status -s | grep -E 'R' | awk '{print $4}')"
+echo $files | xargs rubocop --display-cop-names --extra-details --parallel --force-exclusion
+```
