@@ -2,7 +2,7 @@
 
 Run Rubocop when commit
 
-Copy the following code into .git/hooks/pre-commit and ensure this file is an executable.
+Copy the following code into .git/hooks/pre-commit
 
 ```ruby
 #!/bin/bash
