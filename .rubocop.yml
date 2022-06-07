@@ -1,0 +1,19 @@
+Style/Encoding:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120
+
+Style/Documentation:
+  Enabled: false
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/{rails,rake}'
+    - 'test/**/**'
+    - 'bin/**'
+    - 'Gemfile'
