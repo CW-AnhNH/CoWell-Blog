@@ -17,3 +17,5 @@ AllCops:
     - 'test/**/**'
     - 'bin/**'
     - 'Gemfile'
+
+require: rubocop-rails
