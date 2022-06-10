@@ -2,13 +2,13 @@
 
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
-    before_action :authenticate_user! 
+    before_action :authenticate_user!
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
     rescue_from ActiveRecord::RecordNotSaved, with: :record_not_saved
     rescue_from ActiveRecord::RecordNotUnique, with: :record_not_updated
 
     before_action :configure_permitted_parameters, if: :devise_controller?
-    
+
 
     protected
 
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
         # def get_post
         #     @post = Post.find(params[:id])
         # end
-        
+
         # def get_comment
         #     @post = Post.find(params[:post_id])
         # end

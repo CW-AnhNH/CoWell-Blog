@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @users = User.all
+    @users = User.all # except admin user
   end
 end
