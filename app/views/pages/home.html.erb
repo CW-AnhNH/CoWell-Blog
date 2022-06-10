@@ -18,13 +18,11 @@
          <tr>
            <td><%= user.username %></td>
            <td><%= user.email %></td>
-           <td><%= link_to 'Show', user %></td>
          </tr>
        <% end %>
       </tbody>
    </table>
-   <%= link_to("Sign Out", destroy_user_session_path, :method => :delete) %>
-<p> You have been successfully authenticated </p>
+   <%= link_to("Logout", destroy_user_session_path, "data-turbo-method": :delete) %>
 
 <% else %>
     <p> Welcome <% current_user.username %> </p>
