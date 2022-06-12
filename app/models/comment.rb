@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
-    belongs_to : user, post, group
-    has_many : active_relationship, foreign_key: "user_id", "post_id"
+  validates :content, presence :true
+  belongs_to :user
+	belongs_to :post
 end

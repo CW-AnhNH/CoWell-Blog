@@ -1,3 +1,5 @@
+
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -9,13 +11,12 @@ gem "rails", "~> 7.0.2", ">= 7.0.2.3"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-
 # Use mysql as the database for Active Record
 gem "mysql2", "~> 0.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
+gem 'bootstrap', '~> 5.1.3'
 gem "puma", "~> 5.0"
-
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
@@ -75,3 +76,7 @@ group :test do
 end
 
 gem "devise", "~> 4.8"
+
+gem "omniauth"
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
