@@ -7,7 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
 
-  validates :family_name, :email, presence: true
+  validates  :email, presence: true
   has_many :posts
   has_many :comments
   belongs_to :group, optional: true
