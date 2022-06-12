@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 class PagesController < ApplicationController
-  
   def home
-    @users = User.where(admin: false).or(User.where(admin: nil))
+    @users = User.where.not(admin: true)
   end
 end
