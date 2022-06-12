@@ -2,6 +2,8 @@
 
 module Admin
   class DashboardController < Admin::BaseController
-    def index; end
+    def index
+      @post =  Post.all
+    end
   end
 end
