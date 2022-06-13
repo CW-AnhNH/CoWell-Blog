@@ -10,7 +10,8 @@ class User < ApplicationRecord
   validates  :email, presence: true
   has_many :posts
   has_many :comments
-  belongs_to :group, optional: true
+  has_many :groups
+  
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

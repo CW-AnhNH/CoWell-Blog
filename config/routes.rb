@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  get 'groups/index'
   namespace :admin do
     get 'dashboard/index'
     get 'users/index'
-    get 'groups'
+    get 'groups', to: 'groups#index'
     # routes for admin
   end
   root 'pages#home'
@@ -11,6 +12,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
