@@ -29,16 +29,17 @@ module Users
     #   super(scope)
     # end
     def google_oauth2
-      user = User.from_omniauth(auth)
+      handle_auth "Google"
+    end
 
-      if user.present?
-        sign_out_all_scopes
-        flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
-        sign_in_and_redirect user, event: :authentication
+    def handle_auth(kind)
+      @user = User.from_omniauth(request.env[omniauth.auth])
+      if @user.persisted?
+        flash[:notice] = I18n.t 'devise.omniauth_callbacks.success', kind:kind
+        sign_in_and_redirect @user, event: :authentication
       else
-        flash[:alert] =
-          t 'devise.omniauth_callbacks.failure', kind: 'Google', reason: "#{auth.info.email} is not authorized."
-        redirect_to new_user_session_path
+        session['devise.auth_data'] = request.env['omniauth.auth'].except('extra')
+        redirect_to new_user_registration_path, alert: @user.errors.full_message.join("\n")
       end
     end
   end

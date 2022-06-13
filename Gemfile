@@ -75,6 +75,6 @@ end
 
 gem "devise", "~> 4.8"
 
-gem "omniauth"
+
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
