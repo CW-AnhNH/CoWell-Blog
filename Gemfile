@@ -50,6 +50,9 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem 'rubocop'
+gem 'will_paginate'
+gem 'file_validators'
+gem 'bootstrap', '~> 5.1.3'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -75,3 +78,9 @@ group :test do
 end
 
 gem "devise", "~> 4.8"
+gem 'byebug'
+gem 'ransack'
+gem 'kaminari'
+
+gem "image_processing"
+gem 'imgproxy'
