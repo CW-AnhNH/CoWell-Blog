@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
   get 'groups/index'
   namespace :admin do
-    get 'dashboard/index'
+    get '/dashboard', to: 'dashboard#index'
     get 'users/index'
-    get 'groups', to: 'groups#index'
+    get 'dashboard/groups', to: 'groups#index'
+    get 'posts/index', to: 'dashboard#posts'
+    
     # routes for admin
   end
+ 
+  resources :groups, path: '/admin/groups'
   root 'pages#home'
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',

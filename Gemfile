@@ -78,3 +78,4 @@ gem "devise", "~> 4.8"
 
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
+gem 'ransack'

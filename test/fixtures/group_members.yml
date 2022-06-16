@@ -3,13 +3,11 @@
 one:
   group_id: MyString
   integer: MyString
-  user_id: MyString
-  integer: MyString
+  user_id: 1
   status: 1
 
 two:
   group_id: MyString
   integer: MyString
-  user_id: MyString
-  integer: MyString
+  user_id: 1
   status: 1

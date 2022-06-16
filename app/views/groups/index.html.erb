@@ -1,2 +1,57 @@
-<h1>Groups#index</h1>
-<p>Find me in app/views/groups/index.html.erb</p>
+<p style="color: green"><%= notice %></p>
+
+<h1>Groups</h1>
+
+<%= search_form_for @q, remote: true do |f| %>
+  <%= f.label :name_cont, 'Group Name' %>
+  <%= f.search_field :name_cont %>
+  <%= f.label :description_cont, 'Group Desc' %>
+  <%= f.search_field :description_cont %>
+  
+  <%= f.submit %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Group Name</th>
+      <th>Created User's Name</th>
+      <th>Description</th>
+      <th>Privacy</th>
+      <th>Created At</th>
+      <th>Total Members</th>
+      <th>Total Posts</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.name%>
+        <td><%= User.find_by_id(group.user_id) %></td>
+        <td><%=  %></td>
+        <td>
+          <% if group.description.size>100 %>
+             <%= group.description.first(100) %>
+             <%= "..." %>
+            <% else %>
+              <%= group.description %>
+            <% end %>
+        </td>
+        <td><%= group.privacy %></td>
+        <td><%= group.created_at %></td>
+        <td><%= group.members.count %></td>
+        <td><%= group.posts.count %></td>
+        <td><%= link_to "Details", group %></td>
+        <td><%= link_to "Edit", edit_group_path(group) %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%= link_to "New group", new_group_path %>
