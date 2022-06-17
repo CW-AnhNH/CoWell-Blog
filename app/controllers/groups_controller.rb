@@ -1,13 +1,26 @@
 
   class GroupsController < ApplicationController
-    before_action :set_group, only: %i[ show edit update destroy ]
-    before_action :must_be_admin, only: %i[ show edit update destroy ]
-
+    before_action :set_group, only: %i[  show edit update destroy ]
+    before_action :must_be_admin, only: %i[  edit update destroy ]
+    
     # GET /groups or /groups.json
     def index
       #@groups = Group.all
       @q = Group.ransack(params[:q])
+      @groups = @q.result.includes(:user)
+      @user = User.all
+      if current_user.admin?
+        render 'index'
+      else
+        render 'list_for_user'
+      end
+
+    end
+
+    def index_for_user
+      @q = Group.ransack(params[:q])
       @groups = @q.result
+      
     end
   
     # GET /groups/1 or /groups/1.json

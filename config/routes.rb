@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   end
  
   resources :groups, path: '/admin/groups'
+  #get 'user/groups', to: 'groups#index_for_user'
+  get 'user/groups/:id', to: 'groups#show', as: :user_show
   root 'pages#home'
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
