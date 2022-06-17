@@ -9,7 +9,10 @@
   <%= f.search_field :description_cont %>
   <%= f.label :user_username_cont, 'User Name' %>
   <%= f.search_field :user_username_cont %>
-  
+  <%= f.check_box :privacy_true, include_hidden: false %>
+  <%= f.label :privacy, 'Public' %></div>
+  <%= f.check_box :privacy_false, include_hidden: false %>
+  <%= f.label :privacy, 'Private' %></div>
   <%= f.submit %>
 <% end %>
 
