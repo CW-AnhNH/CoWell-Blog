@@ -1,6 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @group %>
+<% unless current_user.admin? %>
+  <%= render "group_user", group: @group %>
+<% else %>
+  <%= render "group", group: @group %>
+<% end %>
+<br>
 
 <div>
   <%= link_to "Edit this group", edit_group_path(@group) %> |

@@ -27,7 +27,7 @@
   <tbody>
     <% @groups.each do |group| %>
         <% if group.privacy==1 || current_user.id == group.user_id %>
-             <tr style="white-space: initial; overflow: auto">
+            <tr style="white-space: initial; overflow: auto">
             <td><%= group.name%></td>
             <td>
               <% if group.privacy==0 %>
@@ -52,4 +52,4 @@
 <br>
 
 
-<%= link_to "New group", groups_path %>
+<%= link_to "New group", new_group_path %>

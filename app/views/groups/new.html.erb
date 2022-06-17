@@ -1,7 +1,10 @@
 <h1>New group</h1>
 
-<%= render "form", group: @group %>
-
+<% unless current_user.admin? %>
+  <%= render "form_user", group: @group %>
+<% else %>
+  <%= render "form", group: @group %>
+<% end %>
 <br>
 
 <div>
