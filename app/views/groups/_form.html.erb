@@ -17,9 +17,36 @@
   </div>
 
   <div>
+    <%= "Group created by user: " %>
+    <%= User.find_by_id(group.user_id).username %>
+  </div>
+
+  <div>
+  <%= "Group created at: " %>
+  <%= group.created_at %>
+  </div>
+
+  <div>
+  <%= "Total Group Members: " %>
+  <%= group.members.count %>
+  </div>
+
+  <div>
+  <%= "Total Posts: " %>
+  <%= group.posts.count %>
+  </div>
+
+  <div>
     <%= form.label :description, style: "display: block" %>
     <%= form.text_area :description %>
   </div>
+
+  <p>
+    <b>Privacy</b><br />
+    <%= form.radio_button :privacy, '0' %> Private<br />
+    <%= form.radio_button :privacy, '1' %> Public<br />
+    
+  </p>
 
   <div>
     <%= form.submit %>
