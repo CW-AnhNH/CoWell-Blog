@@ -31,9 +31,9 @@ class User < ApplicationRecord
     where('username LIKE :query OR email LIKE :query', { query: "%#{search}%" })
   end
 
-  # def self.status(status)
-  #   where('status LIKE :query', { query: "%#{status}%" })
-  # end
+  def self.status(status)
+    where('status LIKE :query', { query: "%#{status}%" })
+  end
 
   enum :status, { permit: 0, ban: 1 }
 end
