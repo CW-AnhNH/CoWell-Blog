@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Group < ApplicationRecord
+
+  validates :name, presence: true
   paginates_per 50
   belongs_to :user
   has_many :posts

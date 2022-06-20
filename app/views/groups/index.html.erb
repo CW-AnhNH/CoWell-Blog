@@ -34,7 +34,7 @@
     <% @groups.each do |group| %>
       <tr style="white-space: initial; overflow: auto">
         <td><%= group.name%>
-        <td><%= User.find_by_id(group.user_id).username %></td>
+        <td><%= User.find_by_id(group.user_id)&.username %></td>
         
         <td style="overflow-wrap: break-word; width:300px;">
           <% if group.description.size>100 %>
