@@ -18,4 +18,13 @@
     <% end %>
   </p>
 
+  <p>
+  <h2>Members: <h2>
+  <% @group.members.each do |member| %>
+      <h3><%= member.username %></h3>
+      <p><%= member.email %></p>
+      <br>
+  <% end %>
+</p>
+
 </div>

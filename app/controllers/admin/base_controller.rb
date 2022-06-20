@@ -2,7 +2,7 @@
 
 module Admin
   class BaseController < ApplicationController
-    layout "admin_layout"
+    layout 'admin_layout'
     before_action :check_admin_permission
 
     private
