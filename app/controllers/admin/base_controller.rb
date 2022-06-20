@@ -2,9 +2,9 @@
 
 module Admin
   class BaseController < ApplicationController
-    layout 'admin_layout'
+    layout 'sidebar_layout'
     before_action :check_admin_permission
-
+    
     private
 
     def check_admin_permission
