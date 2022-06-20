@@ -13,8 +13,8 @@
     post_title = Faker::Coffee.blend_name
     post_content = Faker::Games::WorldOfWarcraft.quote
     group_name = Faker::Games::Witcher.character
-    group_description = Faker::Lorem.sentence(word_count: 10)
-    user = User.create(username: username, last_name: last_name, email: email )
+    group_description = Faker::Quote.famous_last_words
+    user = User.create(username: username, email: email, admin: false, password: 123456)
     group = Group.create(name: group_name, description: group_description, user: user, privacy: 1 )
     post = Post.create(title: post_title, content: post_content, user: user, group: group)
     Comment.create(content: comment, user: user, post: post)

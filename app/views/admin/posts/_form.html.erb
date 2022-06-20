@@ -1,0 +1,30 @@
+<%= form_with(model: [:admin, post]) do |form| %>
+
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :content, style: "display: block" %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+  <b>Privacy</b><br />
+  <%= form.radio_button :privacy, '0' %> Private<br />
+  <%= form.radio_button :privacy, '1' %> Public<br />
+  </div>
+
+  <div>
+  <b>Status</b><br />
+  <%= form.radio_button :status, '0' %> Pending<br />
+  <%= form.radio_button :status, '1' %> Accepted<br />
+  <%= form.radio_button :status, '2' %> Rejected<br />
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

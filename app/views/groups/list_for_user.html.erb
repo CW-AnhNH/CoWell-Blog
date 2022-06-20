@@ -2,6 +2,8 @@
 
 <h1>Groups</h1>
 
+<%= paginate @groups, window: 2 %>
+
 <%= search_form_for @q, remote: true do |f| %>
   <%= f.label :name_cont, 'Group Name' %>
   <%= f.search_field :name_cont %>

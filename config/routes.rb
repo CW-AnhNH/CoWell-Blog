@@ -3,14 +3,17 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
     get 'users/index'
-    #get '/groups', to: 'groups#index'
-    get 'posts/index', to: 'dashboard#posts'
+    get '/groups', to: 'groups#index'
+    #post '/posts/:id/edit', to: 'posts#update'
+    #get 'posts/index', to: 'dashboard#posts'
+    resources :groups
+    resources :posts
     
     # routes for admin
   end
- 
+  
   resources :groups, path: 'groups'
-  get 'admin/groups', to: 'groups#index'
+  #get 'admin/groups', to: 'groups#index'
   get 'user/groups/:id', to: 'groups#show', as: :user_show
   root 'pages#home'
   devise_for :users, controllers: {
