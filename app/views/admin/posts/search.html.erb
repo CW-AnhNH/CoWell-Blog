@@ -1,0 +1,26 @@
+<table class="table table-bordered border-primary">
+     <thead>
+        <tr>
+        <th>Title</th>
+        <th>Created Users Name</th>
+        <th>Content</th>
+        <th>Created at</th>
+        <th colspan="3">Actions</th>
+       </tr>
+     </thead>
+
+     <tbody>
+       <% @results.each do |post| %>
+         <tr>
+           <td><%= post.title %></td>
+           <td><%= post.user.username %></td>
+           <td><%= post.content %></td>
+           <td><%= post.created_at %></td>
+           <td><%= link_to 'Show', admin_post_path(post) %></td>
+           <td><%= link_to 'Edit', edit_admin_post_path(post) %></td>
+           <td><%= link_to "Destroy", admin_post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
+         </tr>
+       <% end %>
+      </tbody>
+   </table>
+   <%= link_to 'Back', admin_posts_path %>

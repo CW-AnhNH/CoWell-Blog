@@ -1,0 +1,26 @@
+<%= form_with model: @post do |form| %>
+    <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+    </div>
+  
+    <div>
+
+    <%= form.label :content %><br>
+    <%= form.text_area :content %><br>
+    </div>
+
+    <div class="form-group col-md-4 field radio-inline">
+  <%= form.radio_button :privacy, :public, checked: "checked" %>
+  <%= form.label :Public %>
+</div>
+
+<div class="form-group col-md-4 field radio-inline">
+  <%= form.radio_button :privacy, :private %>
+  <%= form.label :Private %>
+</div>
+  
+    <div>
+      <%= form.submit %>
+    </div>
+<% end %>

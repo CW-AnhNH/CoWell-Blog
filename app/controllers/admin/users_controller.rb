@@ -3,13 +3,9 @@
 module Admin
   class UsersController < Admin::BaseController
     before_action :get_user, only: %i[show edit update destroy]
+    before_action :set_q, only: %i[index search]
     def index
-      @users = User.where.not(admin: true)
-      @users = if params[:search]
-                 @users.search(params[:search])
-               else
-                 @users.all
-               end
+      @users = User.page(params[:page]).where.not(admin: true)
     end
 
     def show; end
@@ -31,7 +27,7 @@ module Admin
     def edit; end
 
     def update
-      if @user.update_attributes(user_params)
+      if @user.update(user_params)
         redirect_to admin_users_path
       else
         render 'edit'
@@ -43,10 +39,18 @@ module Admin
       redirect_to admin_users_path
     end
 
+    def search
+      @results = @q.result(distinct: true)
+    end
+
     private
 
+    def set_q
+      @q = User.ransack(params[:q])
+    end
+
     def user_params
-      params.require(:user).permit(:avatar, :username, :email, :birthday, :password,
+      params.require(:user).permit(:avatar, :username, :email, :birthday, :status, :password,
                                    :password_confirmation)
     end
   end

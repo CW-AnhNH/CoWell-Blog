@@ -15,7 +15,7 @@
 
   <div class="form-group col-md-4 field">
     <%= f.label :birthday %><br />
-    <%= f.datetime_select :birthday, autofocus: true, autocomplete: "birthday", class: "form-control" %>
+    <%= f.date_select :birthday, autofocus: true, autocomplete: "birthday", class: "form-control" %>
   </div>
 
     <div class="form-group col-md-4 field">
@@ -36,11 +36,18 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
   </div>
 
-    <div class="form-group col-md-4 field">
-    <%= f.label :avatar %><br />
-    <%= f.file_field :avatar, autocomplete: "new-password", class: "form-control" %>
+  <div class="form-group col-md-4 file-field">
+  <%= f.label :avatar %><br />
+  <%= f.file_field :avatar, autocomplete: "avatar", class: "form-control" %>
+  </div>
+  <div class="img-prev">
+  <% if @user.avatar.present? %>
+    <%= image_tag @user.avatar, width: 100 %>
+  <% end %>
   </div>
 
-    <%= f.submit "Save changes", class: "btn btn-primary" %>
+  <br>
+
+    <%= f.submit "Create user", class: "btn btn-outline-primary" %>
     <% end %>
 </div>

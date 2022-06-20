@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :users
-    get 'dashboard/' => 'dashboard#index'
+    resources :users do
+      collection do
+        get 'search'
+      end
     # get 'users/' => 'users#index'
     # get 'users/new' => 'users#new'
     # post 'users/' => 'users#create'
@@ -12,10 +14,13 @@ Rails.application.routes.draw do
     # delete '/users/:id' => 'users#destroy', as: 'users_delete'
 
     # routes for admin
+    end
+    resources :posts
+    get 'dashboard/' => 'dashboard#index'
   end
   
-
-  root 'pages#home'
+  resources :posts
+  root 'posts#index'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

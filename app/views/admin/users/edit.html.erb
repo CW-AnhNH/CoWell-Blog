@@ -1,5 +1,12 @@
-<% content_for :page_title, "Edit User" %>
+<h1>Update User</h1>
 <%= form_with model:[:admin, @user],local:true do |f| %>
+  <% if @user.errors.present? %>
+      <ul>
+        <% @user.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
     <div class="form-group col-md-4 field">
     <%= f.label :email %><br />
@@ -13,9 +20,28 @@
 
   <div class="form-group col-md-4 field">
     <%= f.label :birthday %><br />
-    <%= f.datetime_select :birthday, autofocus: true, autocomplete: "birthday", class: "form-control" %>
+    <%= f.date_select :birthday, autofocus: true, autocomplete: "birthday", class: "form-control" %>
   </div>
 
-    <%= f.submit "Save changes", class: "btn btn-primary" %>
-    <% end %>
-<%= link_to 'Back', admin_users_path %>
+  <div class="form-group col-md-4 field radio-inline">
+  <%= f.radio_button :status, :permit, checked: "checked" %>
+  <%= f.label :Permit %>
+</div>
+
+<div class="form-group col-md-4 field radio-inline">
+  <%= f.radio_button :status, :ban %>
+  <%= f.label :Ban %>
+</div>
+<div class="form-group col-md-4 file-field">
+<%= f.label :avatar %><br />
+<%= f.file_field :avatar, autocomplete: "avatar", class: "form-control" %>
+</div>
+<div class="img-prev">
+<% if @user.avatar.present? %>
+  <%= image_tag @user.avatar, width: 80%>
+<% end %>
+</div>
+<br>
+  <%= f.submit "Update", class: "btn btn-outline-primary" %>
+  <% end %>
+  <%= link_to 'Back', admin_posts_path %>

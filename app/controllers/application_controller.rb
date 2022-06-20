@@ -20,9 +20,9 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # def get_post
-  #     @post = Post.find(params[:id])
-  # end
+  def get_post
+    @post = Post.find(params[:id])
+  end
 
   # def get_comment
   #     @post = Post.find(params[:post_id])

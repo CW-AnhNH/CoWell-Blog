@@ -79,8 +79,10 @@ end
 
 gem "devise", "~> 4.8"
 gem 'byebug'
-gem 'ransack'
+gem 'ransack', :github => 'activerecord-hackery/ransack', :branch => 'main'
 gem 'kaminari'
 
 gem "image_processing"
 gem 'imgproxy'
+
+gem 'cloudinary'
