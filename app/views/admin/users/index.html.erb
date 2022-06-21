@@ -18,8 +18,6 @@
          <td>
          <% if user.avatar.present? %>
             <%= image_tag(user.avatar, width: 80) %>
-            <% else %>
-            <img alt="image" class="rounded-circle" src="/assets/images/default_user.jpg">
           <% end %>
         </td>
            <td><%= user.username %></td>
@@ -36,7 +34,7 @@
 
    <%= paginate @users %>
 
-   <%= search_form_for @q, url: search_admin_users_path do |f| %>
+   <%= search_form_for @q, url: admin_users_path do |f| %>
     <%= f.search_field :username_or_email_cont %>
     <%= f.label :Permit %>
     <%= f.check_box :status_eq, {}, 0, nil %>

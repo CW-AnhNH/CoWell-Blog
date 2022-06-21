@@ -3,10 +3,11 @@
 module Admin
   class PostsController < Admin::BaseController
     before_action :get_post, only: %i[show edit update destroy]
-    before_action :set_q, only: %i[index search]
+    before_action :set_q, only: %i[index]
 
     def index
-      @posts = Post.page(params[:page]).all
+      # @posts = Post.page(params[:page]).all
+      @posts = @q.result(distinct: true).page(params[:page])
     end
 
     def new
@@ -41,9 +42,6 @@ module Admin
       redirect_to admin_posts_path
     end
 
-    def search
-      @results = @q.result(distinct: true)
-    end
 
     private
 

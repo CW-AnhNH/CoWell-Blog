@@ -1,11 +1,10 @@
-# frozen_string_literal: true
-
 module Admin
   class UsersController < Admin::BaseController
     before_action :get_user, only: %i[show edit update destroy]
-    before_action :set_q, only: %i[index search]
+    before_action :set_q, only: %i[index]
     def index
-      @users = User.page(params[:page]).where.not(admin: true)
+      # @users = User.page(params[:page]).where.not(admin: true)
+      @users = @q.result(distinct: true).page(params[:page]).where.not(admin: true)
     end
 
     def show; end
@@ -37,10 +36,6 @@ module Admin
     def destroy
       @user.destroy
       redirect_to admin_users_path
-    end
-
-    def search
-      @results = @q.result(distinct: true)
     end
 
     private

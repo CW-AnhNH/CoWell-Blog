@@ -23,5 +23,14 @@
        <% end %>
       </tbody>
    </table>
-   
+
    <%= paginate @posts %>
+
+   <%= search_form_for @q, url: admin_posts_path do |f| %>
+    <%= f.search_field :title_or_content_cont %>
+    <%= f.label :Public %>
+    <%= f.check_box :privacy_eq, {}, 0, nil %>
+    <%= f.label :Private %>
+    <%= f.check_box :privacy_eq, {}, 1, nil %>
+    <%= f.submit "Search", class: "btn btn-outline-info" %>
+    <% end %>

@@ -50,7 +50,6 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem 'rubocop'
-gem 'will_paginate'
 gem 'file_validators'
 gem 'bootstrap', '~> 5.1.3'
 
@@ -83,6 +82,5 @@ gem 'ransack', :github => 'activerecord-hackery/ransack', :branch => 'main'
 gem 'kaminari'
 
 gem "image_processing"
-gem 'imgproxy'
 
 gem 'cloudinary'
