@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   namespace :admin do
     get 'dashboard/index'
     get 'users/index'
@@ -6,7 +7,6 @@ Rails.application.routes.draw do
   end
   resources :posts
   root 'posts#index'
-  devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
