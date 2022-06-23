@@ -2,6 +2,8 @@
 
 class PostsController < ApplicationController
     before_action :get_post, only: %i[show edit update destroy]
+
+    # layout "header"
   
     def index
       @posts = Post.all
