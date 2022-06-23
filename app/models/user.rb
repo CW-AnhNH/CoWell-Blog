@@ -4,7 +4,7 @@ class User < ApplicationRecord
   extend Devise::Models
 
   paginates_per 2
-  has_many :posts, dependent: :destroy
+  has_many :posts,  dependent: :destroy
   has_many :groups, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

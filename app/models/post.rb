@@ -10,4 +10,7 @@ class Post < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 500 }
   validates :content, presence: true, length: { maximum: 2000 }
+
+  enum :privacy, { publics: 0, privates: 1 }
+  enum :status, { pendings: 0, approveds: 1, rejects: 2 }
 end
