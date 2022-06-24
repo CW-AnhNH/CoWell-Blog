@@ -1,17 +1,16 @@
 <table class="table table-bordered border-primary">
-<thead>
-<tr>
-<th>Title</th>
-<th>Created Users Name</th>
-<th>Content</th>
-<th>Group name</th>
-<th>Created at</th>
-<th>Status</th>
-<th>Privacy</th>
-<th colspan="3">Actions</th>
-</tr>
-</thead>
-
+  <thead>
+  <tr>
+  <th>Title</th>
+  <th>Created Users Name</th>
+  <th>Content</th>
+  <th>Group name</th>
+  <th>Created at</th>
+  <th>Status</th>
+  <th>Privacy</th>
+  <th colspan="3">Actions</th>
+  </tr>
+  </thead>
      <tbody>
        <% @posts.each do |post| %>
          <tr>
@@ -28,15 +27,15 @@
          </tr>
        <% end %>
       </tbody>
-   </table>
+</table>
 
    <%= paginate @posts %>
 
    <%= search_form_for @q, url: admin_posts_path do |f| %>
     <%= f.search_field :title_or_content_cont %>
     <%= f.label :Public %>
-    <%= f.check_box :privacy_eq, {}, 0, nil %>
+    <%= f.check_box :privacy_eq_any, { multiple: true }, 0, '' %>
     <%= f.label :Private %>
-    <%= f.check_box :privacy_eq, {}, 1, nil %>
+    <%= f.check_box :privacy_eq_any, { multiple: true }, 1, '' %>
     <%= f.submit "Search", class: "btn btn-outline-info" %>
     <% end %>

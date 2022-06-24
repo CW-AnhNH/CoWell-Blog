@@ -42,14 +42,11 @@ module Admin
       redirect_to admin_posts_path
     end
 
-
     private
 
     def set_q
       @q = Post.ransack(params[:q])
     end
-
-    private
 
     def post_params
       params.require(:post).permit(:title, :content)
