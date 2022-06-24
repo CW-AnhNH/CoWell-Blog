@@ -6,13 +6,15 @@
 			<a class="nav-item nav-link"><li><%= link_to "Group", root_path %></li></a>			
 			<a class="nav-item nav-link"><li><%= link_to "Users", root_path %></li></a>
 		</div>
-		<form class="navbar-form form-inline">
+		<%= search_form_for @q, class: "navbar-form form-inline", url: posts_path do |f| %>
 			<div class="input-group search-box">								
-				<input type="text" id="search" class="form-control" placeholder="Search here...">
+			  <%= f.search_field :title_cont, id: "search", class: "form-control", placeholder: "Search here..." %>
 				<div class="input-group-append">
 					<span class="input-group-text">
 						<i class="material-icons">&#xE8B6;</i>
 					</span>
+						<%= f.submit "Search", class: "btn btn-outline-info" %>
+						<% end %>
 				</div>
 			</div>
 		</form>

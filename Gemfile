@@ -76,3 +76,7 @@ end
 
 gem "devise", "~> 4.8"
 gem 'bootstrap', '~> 5.1.3'
+
+gem 'ransack', :github => 'activerecord-hackery/ransack', :branch => 'main'
+gem 'kaminari'
+gem 'cloudinary'

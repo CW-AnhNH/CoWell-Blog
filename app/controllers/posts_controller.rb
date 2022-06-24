@@ -2,11 +2,12 @@
 
 class PostsController < ApplicationController
     before_action :get_post, only: %i[show edit update destroy]
+    before_action :set_q, only: %i[index]
 
     # layout "header"
   
     def index
-      @posts = Post.all
+      @posts = @q.result(distinct: true).page(params[:page])
     end
   
     def new
@@ -39,6 +40,10 @@ class PostsController < ApplicationController
       @post.destroy
   
       redirect_to admin_posts_path
+    end
+
+    def set_q
+      @q = Post.ransack(params[:q])
     end
   
     private
