@@ -7,7 +7,7 @@ module Admin
     private
 
     def check_admin_permission
-      redirect_to root_path unless current_user.admin?
+      # redirect_to root_path unless current_user.admin?
     end
 
     def get_user
