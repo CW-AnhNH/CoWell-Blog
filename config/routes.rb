@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     #post '/posts/:id/edit', to: 'posts#update'
     #get 'posts/index', to: 'dashboard#posts'
     resources :groups
-    resources :posts
+    resources :posts do
+      resources :comments
+    end
     
     # routes for admin
   end
