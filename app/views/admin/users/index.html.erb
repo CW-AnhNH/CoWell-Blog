@@ -7,6 +7,8 @@
         <th>Name</th>
         <th>Email</th>
         <th>Birthday</th>
+        <th>Total created posts</th>
+        <th>Total joined groups</th>
         <th>Status</th>
         <th colspan="3">Actions</th>
        </tr>
@@ -23,6 +25,8 @@
            <td><%= user.username %></td>
            <td><%= user.email %></td>
            <td><%= user.birthday %></td>
+           <td><%= user.posts.count %></td>
+           <td><%= user.groups.count %></td>
            <td><%= user.status %></td>
            <td><%= link_to 'Show', admin_user_path(user) %></td>
            <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>

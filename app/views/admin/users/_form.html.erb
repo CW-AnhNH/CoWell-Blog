@@ -37,13 +37,11 @@
   </div>
 
   <div class="form-group col-md-4 file-field">
-  <%= f.label :avatar %><br />
-  <%= f.file_field :avatar, autocomplete: "avatar", class: "form-control" %>
+    <%= f.label :avatar %><br />
+    <%= f.file_field :avatar, autocomplete: "avatar", :id => "image_#{@user.avatar.id}", class: "photo_upload form-control" %>
   </div>
-  <div class="img-prev">
-  <% if @user.avatar.present? %>
-    <%= image_tag @user.avatar, width: 100 %>
-  <% end %>
+  <div>
+    <%= image_tag("preview.png", :id => "image_#{@user.avatar.id}_medium", width: 80) %>
   </div>
   <br>
   

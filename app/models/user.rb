@@ -3,7 +3,9 @@
 class User < ApplicationRecord
   extend Devise::Models
 
-  paginates_per 2
+  paginates_per 10
+  has_many :comments, dependent: :destroy
+  has_many :post_votings, dependent: :destroy
   has_many :posts,  dependent: :destroy
   has_many :groups, dependent: :destroy
   # Include default devise modules. Others available are:

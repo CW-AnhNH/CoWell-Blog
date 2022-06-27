@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
-  # paginates_per 1
-  has_many :comments
+  paginates_per 10
+  has_many :comments, dependent: :destroy
+  has_many :post_votings, dependent: :destroy
   belongs_to :user, optional: true
   belongs_to :group, optional: true
 
