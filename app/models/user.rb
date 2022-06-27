@@ -21,7 +21,6 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-  has_one_attached :avatar
 
   validates :avatar, file_size: { less_than_or_equal_to: 5.megabytes },
                      file_content_type: { allow: ['image/jpeg', 'image/png', 'image/gif'] }
