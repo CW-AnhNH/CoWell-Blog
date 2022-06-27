@@ -45,7 +45,7 @@ module Admin
     private
 
     def set_q
-      @q = Post.ransack(params[:q])
+      @q = Post.includes(:user, :group, :comments, :post_votings).ransack(params[:q])
     end
 
     def post_params
