@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   private
 
   def get_post
-      @post = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   # def get_comment
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   # end
 
   def get_user
-      @user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def record_not_found
