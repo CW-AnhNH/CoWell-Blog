@@ -2,50 +2,17 @@
 <p>Find me in app/views/admin/users/index.html.erb</p>
 <table class="table table-bordered border-primary">
      <thead>
-        <tr>
-        <th>Avatar</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Birthday</th>
-        <th>Total created posts</th>
-        <th>Total joined groups</th>
-        <th>Status</th>
-        <th colspan="3">Actions</th>
-       </tr>
+      <%= render 'tableHeader' %>
      </thead>
 
      <tbody>
-       <% @users.each do |user| %>
-         <tr>
-         <td>
-         <% if user.avatar.present? %>
-            <%= image_tag(user.avatar, width: 80) %>
-          <% end %>
-        </td>
-           <td><%= user.username %></td>
-           <td><%= user.email %></td>
-           <td><%= user.birthday %></td>
-           <td><%= user.posts.count %></td>
-           <td><%= user.groups.count %></td>
-           <td><%= user.status %></td>
-           <td><%= link_to 'Show', admin_user_path(user) %></td>
-           <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
-           <td><%= link_to "Destroy", admin_user_path(user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
-         </tr>
-       <% end %>
-      </tbody>
-   </table>
+      <%= render 'table', user: @user %>
+     </tbody>
+</table>
 
    <%= paginate @users %>
 
-   <%= search_form_for @q, url: admin_users_path do |f| %>
-    <%= f.search_field :username_or_email_cont %>
-    <%= f.label :Permit %>
-    <%= f.check_box :status_eq_any, { multiple: true }, 0, '' %>
-    <%= f.label :Ban %>
-    <%= f.check_box :status_eq_any, { multiple: true }, 1, '' %>
-    <%= f.submit "Search", class: "btn btn-outline-info" %>
-  <% end %>
+   <%= render 'search' %>
 
 <%= link_to 'Create new user', new_admin_user_path %>
 

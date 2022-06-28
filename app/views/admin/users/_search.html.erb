@@ -1,0 +1,8 @@
+<%= search_form_for @q, url: admin_users_path do |f| %>
+    <%= f.search_field :username_or_email_cont %>
+    <%= f.label :Permit %>
+    <%= f.check_box :status_eq_any, { multiple: true }, 0, '' %>
+    <%= f.label :Ban %>
+    <%= f.check_box :status_eq_any, { multiple: true }, 1, '' %>
+    <%= f.submit "Search", class: "btn btn-outline-info" %>
+<% end %>
