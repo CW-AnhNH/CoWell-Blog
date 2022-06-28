@@ -1,0 +1,45 @@
+<h1>Update User</h1>
+<%= form_with model:[:admin, @user],local:true do |f| %>
+  <% if @user.errors.present? %>
+      <ul>
+        <% @user.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="form-group col-md-4 field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, :readonly => true, autofocus: true, autocomplete: "email", class: "form-control" %>
+  </div>
+
+ <div class="form-group col-md-4 field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "form-control" %>
+  </div>
+
+  <div class="form-group col-md-4 field">
+    <%= f.label :birthday %><br />
+    <%= f.date_select :birthday, autofocus: true, autocomplete: "birthday", class: "form-control" %>
+  </div>
+
+  <div class="form-group col-md-4 field radio-inline">
+  <%= f.radio_button :status, :permit, checked: "checked" %>
+  <%= f.label :Permit %>
+</div>
+
+<div class="form-group col-md-4 field radio-inline">
+  <%= f.radio_button :status, :ban %>
+  <%= f.label :Ban %>
+</div>
+<div class="form-group col-md-4 file-field">
+<%= f.label :avatar %><br />
+<%= f.file_field :avatar, autocomplete: "avatar", :id => "image_field", class: "photo_upload form-control" %>
+</div>
+<div>
+<%= image_tag("preview.png", :id => "image_preview", width: 80) %>
+</div>
+<br>
+  <%= f.submit "Update", class: "btn btn-outline-primary" %>
+  <% end %>
+  <%= link_to 'Back', admin_posts_path %>

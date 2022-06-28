@@ -12,22 +12,20 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[username email family_name last_name birthday password
+                                                         password_confirmation])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[avatar username email family_name last_name birthday password
+                                                                password_confirmation])
   end
 
   private
 
-  # def get_post
-  #     @post = Post.find(params[:id])
-  # end
+  def get_post
+    @post = Post.find(params[:id])
+  end
 
   # def get_comment
   #     @post = Post.find(params[:post_id])
-  # end
-
-  # def get_user
-  #     @user = User.find(params[:id])
   # end
 
   def record_not_found
@@ -40,5 +38,13 @@ class ApplicationController < ActionController::Base
 
   def record_not_updated
     render plain: "409 Coundn't update record", status: 409
+  end
+
+  def after_sign_in_path_for(user)
+    if user.admin?
+      admin_dashboard_path
+    else
+      root_path
+    end
   end
 end

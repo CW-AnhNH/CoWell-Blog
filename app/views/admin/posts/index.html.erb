@@ -1,0 +1,12 @@
+<table class="table table-bordered border-primary table-responsive">
+  <thead>
+      <%= render 'tableHeader' %>
+  </thead>
+   <tbody>
+      <%= render 'table', post: @post %>
+   </tbody>
+</table>
+
+   <%= paginate @posts %>
+
+   <%= render 'search' %>
