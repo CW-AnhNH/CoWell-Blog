@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   end
 
   def set_q
-    @q = Post.ransack(params[:q])
+    @q = Post.includes(:user, :group, :comments, :post_votings).ransack(params[:q])
   end
 
   private

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class UsersController < ApplicationController
   before_action :get_user, only: %i[show follow unfollow]
   def index

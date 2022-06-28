@@ -3,7 +3,9 @@
 <div class="row">
     <div class="col-md-8">
         <div class="media g-mb-30 media-post">
-            <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Image Description">
+        <div class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15">
+          <%= image_tag post.user.avatar if post.user.avatar.present? %> 
+        </div>
             <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
             <h4 class="g-color-gray-dark-v4 g-font-size-18"><%= post.user.username %></h4>
             <span class="g-color-gray-dark-v4 g-font-size-12"><%= post.created_at %></span>
