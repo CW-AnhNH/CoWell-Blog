@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Admin
   class UsersController < Admin::BaseController
     before_action :get_user, only: %i[show edit update destroy]
     before_action :set_q, only: %i[index]
-    
+
     def index
       @users = @q.result(distinct: true).page(params[:page]).where.not(admin: true)
     end
