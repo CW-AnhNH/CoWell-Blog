@@ -1,0 +1,12 @@
+<%= search_form_for @q, class: "navbar-form form-inline", url: posts_path do |f| %>
+    <div class="input-group search-box">								
+      <%= f.search_field :title_cont, id: "search", class: "form-control", placeholder: "Search here..." %>
+        <div class="input-group-append">
+            <span class="input-group-text">
+                <i class="material-icons">&#xE8B6;</i>
+            </span>
+                <%= f.submit "Search", class: "btn btn-outline-info" %>
+                <% end %>
+        </div>
+    </div>
+</form>

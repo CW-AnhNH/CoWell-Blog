@@ -4,7 +4,8 @@ class UsersController < ApplicationController
     @users = User.where.not(admin: true)
   end
 
-  def show; end
+  def show
+  end
 
   def follow
     NotificationMailer.followed_email(@user).deliver
