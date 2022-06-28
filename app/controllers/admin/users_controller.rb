@@ -1,11 +1,9 @@
-# frozen_string_literal: true
-
 module Admin
   class UsersController < Admin::BaseController
     before_action :get_user, only: %i[show edit update destroy]
     before_action :set_q, only: %i[index]
+    
     def index
-      # @users = User.page(params[:page]).where.not(admin: true)
       @users = @q.result(distinct: true).page(params[:page]).where.not(admin: true)
     end
 
@@ -44,6 +42,10 @@ module Admin
 
     def set_q
       @q = User.ransack(params[:q])
+    end
+
+    def get_user
+      @user = User.find(params[:id])
     end
 
     def user_params
