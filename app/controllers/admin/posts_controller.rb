@@ -40,7 +40,6 @@ module Admin
 			end
 		end
 
-		
 		def destroy
 			@post.destroy
 			
