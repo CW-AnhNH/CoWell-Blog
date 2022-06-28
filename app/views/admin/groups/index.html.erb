@@ -34,8 +34,8 @@
   <tbody>
     <% @groups.each do |group| %>
       <tr style="white-space: initial; overflow: auto">
-        <td><%= group.name%>
-        <td><%= User.find_by_id(group.user_id)&.username %></td>
+        <td><%= group.name %>
+        <td><%= group.user.username %></td>
         
         <td style="overflow-wrap: break-word; width:300px;">
           <% if group.description.size>100 %>
@@ -46,11 +46,7 @@
             <% end %>
         </td>
         <td>
-          <% if group.privacy==0 %>
-              <%= "Private"%>
-            <% else %>
-                <%= "Public" %> 
-              <%end %>
+          <%= group.privacy %>
         </td>
         <td><%= group.created_at %></td>
         <td><%= group.members.count %></td>
@@ -62,11 +58,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-
-
-
-
-<%= link_to "New group", new_admin_group_path %>

@@ -27,21 +27,19 @@ module Admin
     end
 
     def update
-      respond_to do |format|
-        if @group.update(group_params)
-          redirect_to group_url(@group), notice: 'Group was successfully updated.' 
-        else
-          render :edit
-        end
+    
+      if @group.update(group_params)
+        redirect_to group_url(@group), notice: 'Group was successfully updated.' 
+      else
+        render :edit
       end
+      
     end
   
     def destroy
       @group.destroy
   
-      respond_to do |format|
-        redirect_to groups_url, notice: 'Group was successfully destroyed.' 
-      end
+      redirect_to admin_groups_url, notice: 'Group was successfully destroyed.' 
     end
   
     private

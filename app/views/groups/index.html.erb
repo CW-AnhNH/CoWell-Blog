@@ -1,64 +1,41 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Groups</h1>
-<%= paginate @groups %>
+
+<%= paginate @groups, window: 2 %>
 
 <%= search_form_for @q, remote: true do |f| %>
-  <%= f.label :name_cont, 'Group Name' %>
-  <%= f.search_field :name_cont %>
-  <%= f.label :description_cont, 'Group Desc' %>
-  <%= f.search_field :description_cont %>
-  <%= f.label :user_username_cont, 'User Name' %>
-  <%= f.search_field :user_username_cont %>
-  <%= f.check_box :privacy_true, include_hidden: false %>
-  <%= f.label :privacy, 'Public' %></div>
-  <%= f.check_box :privacy_false, include_hidden: true %>
-  <%= f.label :privacy, 'Private' %></div>
-  <%= f.submit %>
+<%= f.label :name_cont, 'Group Name' %>
+<%= f.search_field :name_cont %>
+<%= f.submit %>
 <% end %>
 
-<table id="group_list_table" class="table table-striped table-bordered dataTable no-footer" cellspacing="0" role="grid" aria-describedby="list_group_table_info">
+<table id="group_list_table" class="table table-striped table-bordered dataTable no-footer" cellspacing="0" role="grid"
+  aria-describedby="list_group_table_info">
   <thead>
     <tr>
       <th>Group Name</th>
-      <th>Created User's Name</th>
-      <th>Description</th>
       <th>Privacy</th>
       <th>Created At</th>
       <th>Total Members</th>
-      <th>Total Posts</th>
       <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @groups.each do |group| %>
-      <tr style="white-space: initial; overflow: auto">
-        <td><%= group.name%>
-        <td><%= User.find_by_id(group.user_id)&.username %></td>
-        
-        <td style="overflow-wrap: break-word; width:300px;">
-          <% if group.description.size>100 %>
-             <%= group.description.first(100) %>
-             <%= "..." %>
-            <% else %>
-              <%= group.description %>
-            <% end %>
-        </td>
-        <td>
-          <% if group.privacy==0 %>
-              <%= "Private"%>
-            <% else %>
-                <%= "Public" %> 
-              <%end %>
-        </td>
+      <% if group.privacy=:Public || current_user.id == group.user_id %>
+        <tr style="white-space: initial; overflow: auto">
+        <td><%= group.name %></td>
+        <td><%= group.privacy %></td>
         <td><%= group.created_at %></td>
         <td><%= group.members.count %></td>
-        <td><%= group.posts.count %></td>
-        <td><%= link_to "Details", group %></td>
-        <td><%= link_to "Edit", edit_group_path(group) %></td>
-        
-      </tr>
+        <td><%= link_to "Details", group_path(group) %></td>
+
+      <%end%>
+
+
+    </tr>
     <% end %>
   </tbody>
 </table>
@@ -66,4 +43,4 @@
 <br>
 
 
-
+<%= link_to "New group", new_group_path %>

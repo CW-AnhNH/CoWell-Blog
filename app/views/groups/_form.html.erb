@@ -1,6 +1,6 @@
 <%= form_with(model: group) do |form| %>
   <% if group.errors.any? %>
-    <div class="alert alert-warning" role="alert">
+    <div style="color: red">
       <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
 
       <ul>
@@ -17,34 +17,14 @@
   </div>
 
   <div>
-    <%= "Group created by user: " %>
-    <%= User.find_by_id(group.user_id)&.username %>
-  </div>
-
-  <div>
-  <%= "Group created at: " %>
-  <%= group.created_at %>
-  </div>
-
-  <div>
-  <%= "Total Group Members: " %>
-  <%= group.members.count %>
-  </div>
-
-  <div>
-  <%= "Total Posts: " %>
-  <%= group.posts.count %>
-  </div>
-
-  <div>
     <%= form.label :description, style: "display: block" %>
     <%= form.text_area :description %>
   </div>
 
   <p>
     <b>Privacy</b><br />
-    <%= form.radio_button :privacy, '0' %> Private<br />
-    <%= form.radio_button :privacy, '1' %> Public<br />
+    <%= form.radio_button :privacy, 'Private' %> Private<br />
+    <%= form.radio_button :privacy, 'Public' %> Public<br />
     
   </p>
 

@@ -1,10 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
-<% unless current_user.admin? %>
-  <%= render "group_user", group: @group %>
-<% else %>
-  <%= render "group", group: @group %>
-<% end %>
+<%= render @group %>
+
 <br>
 
 <div>

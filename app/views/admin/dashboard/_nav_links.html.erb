@@ -1,9 +1,0 @@
-<div class="container text-center">
-  <p>
-    <%= link_to "Admin", admin_dashboard_index_path %><%= " > #{params[:action].capitalize}" unless params[:action].eql?("index") %>
-  </p>
-  <div class="btn-group">
-    <%= render "admin/dashboard/link", resource: Post %>
-  
-  </div>
-</div>
