@@ -1,14 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<table class="table table-bordered border-primary table-responsive">
+  <thead>
+      <%= render 'tableHeader' %>
+  </thead>
+   <tbody>
+      <%= render 'table', post: @post %>
+   </tbody>
+</table>
 
-<h1>Posts</h1>
+   <%= paginate @posts %>
 
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", admin_post_path(post) %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New post", new_admin_post_path %>
+   <%= render 'search' %>

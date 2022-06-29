@@ -9,7 +9,6 @@ class GroupsController < ApplicationController
     @groups = @q.result.includes(:user).page(params[:page])
   end
 
-
   def show; end
 
   def new
@@ -20,7 +19,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    
+
     if @group.save
       redirect_to group_url(@group), notice: 'Group was successfully created.'
     else
@@ -29,9 +28,8 @@ class GroupsController < ApplicationController
   end
 
   def update
-
     if @group.update(group_params)
-      redirect_to group_url(@group), notice: 'Group was successfully updated.' 
+      redirect_to group_url(@group), notice: 'Group was successfully updated.'
     else
       render :edit
     end
@@ -39,8 +37,8 @@ class GroupsController < ApplicationController
 
   def destroy
     @group.destroy
-    
-    redirect_to groups_url, notice: 'Group was successfully destroyed.' 
+
+    redirect_to groups_url, notice: 'Group was successfully destroyed.'
   end
 
   private

@@ -73,23 +73,23 @@
                 </div>
             </div> -->
 
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 28rem;">
         <div class="card-body">
             <h5 class="card-title">Total Users</h5>
             <h6 class="card-subtitle mb-2 text-muted">Total number of users on this platform</h6>
             <p class="card-text"> <%= @user.all.count %></p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <a href="http://localhost:3000/admin/users" class="card-link">User List</a>
+            
         </div>
     </div>
 
-    <div class="card" style="width: 38rem;">
+    <div class="card" style="width: 28rem;">
         <div class="card-body">
             <h5 class="card-title">Total Groups</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Total number of users on this platform</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Total number of groups on this platform</h6>
             <p class="card-text"> <%= @group.all.count %></p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <a href="http://localhost:3000/admin/groups" class="card-link">Group list</a>
+            
         </div>
     </div>
 </head>

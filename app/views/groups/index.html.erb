@@ -24,7 +24,7 @@
 
   <tbody>
     <% @groups.each do |group| %>
-      <% if group.privacy=:Public || current_user.id == group.user_id %>
+      <% if group.privacy=:publics || current_user.id == group.user_id %>
         <tr style="white-space: initial; overflow: auto">
         <td><%= group.name %></td>
         <td><%= group.privacy %></td>

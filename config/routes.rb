@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'groups/index'
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
     get 'users/index'
@@ -8,12 +7,20 @@ Rails.application.routes.draw do
       resources :comments
     end
     
+    resources :users do
+      collection do
+        get 'search'
+      end
+    end 
     # routes for admin
+    resources :posts
+    get 'dashboard/' => 'dashboard#index'
   end
   
   resources :groups
  
   root 'pages#home'
+
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     sessions: 'users/sessions',
@@ -22,8 +29,4 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 end

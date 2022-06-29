@@ -2,7 +2,6 @@
 
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-    
     def google_oauth2
       handle_auth 'Google'
     end
