@@ -3,6 +3,7 @@
 module Admin
   class PostsController < Admin::BaseController
     before_action :set_post, only: %i[show edit update destroy]
+    before_action :set_q, only: %i[index]
 
     def index
       @q = Post.ransack(params[:q])
@@ -10,42 +11,46 @@ module Admin
       @group = Group.all
     end
 
-    def show; end
-
     def new
       @post = Post.new
     end
 
-    def edit
-      @q = @post.comments.ransack(params[:q])
-      @comments = @q.result.includes(:user).page(params[:page])
-    end
-
     def create
-      @post = Post.new(post_params)
+      @post = Post.new(post_params.merge(user_id: current_user.id))
 
       if @post.save
-        redirect_to post_url(@post), notice: 'Post was successfully created.'
+        redirect_to admin_posts_path
       else
-        render :new
+        render 'new'
       end
     end
+
+    def show; end
 
     def update
       if @post.update(post_params)
-        redirect_to admin_post_url(@post), notice: 'Post was successfully updated.'
+        redirect_to admin_posts_path
       else
-        render :edit
+        render 'edit'
       end
+    end
+
+		def edit
+      @q = @post.comments.ransack(params[:q])
+      @comments = @q.result.includes(:user).page(params[:page])
     end
 
     def destroy
       @post.destroy
 
-      redirect_to admin_posts_url, notice: 'Post was successfully destroyed.'
+      redirect_to admin_posts_path
     end
 
     private
+
+    def set_q
+      @q = Post.includes(:user, :group, :comments, :post_votings).ransack(params[:q])
+    end
 
     def set_post
       @post = Post.find(params[:id])

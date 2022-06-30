@@ -20,23 +20,19 @@ module Admin
     def create
       @comment = Comment.new(comment_params)
 
-      respond_to do |_format|
-        if @comment.save
-          redirect_to comment_url(@comment), notice: 'Comment was successfully created.'
-        else
-          render :new
-        end
-      end
+			if @comment.save
+				redirect_to comment_url(@comment), notice: 'Comment was successfully created.'
+			else
+				render :new
+			end
     end
 
     def update
-      respond_to do |_format|
-        if @comment.update(comment_params)
-          redirect_to comment_url(@comment), notice: 'Comment was successfully updated.'
-        else
-          render :edit
-        end
-      end
+      	if @comment.update(comment_params)
+					redirect_to comment_url(@comment), notice: 'Comment was successfully updated.'
+				else
+					render :edit
+				end
     end
 
     def destroy
