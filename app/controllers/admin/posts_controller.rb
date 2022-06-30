@@ -7,6 +7,7 @@ module Admin
     def index
       @q = Post.ransack(params[:q])
       @posts = @q.result.includes(:user).page(params[:page])
+      @group = Group.all
     end
 
     def show; end
@@ -47,11 +48,11 @@ module Admin
     private
 
     def set_post
-      @post = Post.find_by(params[:id])
+      @post = Post.find(params[:id])
     end
 
     def post_params
-      params.require(:post).permit(:title, :content, :privacy, :group_id, :user_id)
+      params.require(:post).permit(:title, :content, :privacy, :group_id, :user_id, :status)
     end
   end
 end

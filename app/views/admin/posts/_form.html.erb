@@ -1,6 +1,5 @@
 <%= form_with(model: [:admin, post]) do |form| %>
 
-
 <div>
   <%= form.label :title, style: "display: block" %>
   <%= form.text_field :title %>
@@ -26,43 +25,38 @@
   <%= post.comments.count %>
 </div>
 
-
-
 <div>
   <b>Privacy</b><br />
-  <%= form.radio_button :privacy, '0' %> Private<br />
-  <%= form.radio_button :privacy, '1' %> Public<br />
+  <%= form.radio_button :privacy, :privates %> Private<br />
+  <%= form.radio_button :privacy, :publics %> Public<br />
 </div>
 
 <div>
   <b>Status</b><br />
-  <%= form.radio_button :status, '0' %> Pending<br />
-  <%= form.radio_button :status, '1' %> Accepted<br />
-  <%= form.radio_button :status, '2' %> Rejected<br />
+  <%= form.radio_button :status, :pendings %> Pending<br />
+  <%= form.radio_button :status, :approveds %> Accepted<br />
+  <%= form.radio_button :status, :rejects %> Rejected<br />
 </div>
 
 <div>
 
   <b>Comments</b><br />
   <% @comments.each do |comment| %>
-    <b>Content: </b>
-    <%= comment.content %>
-    <b>User:</b>
-    <%= comment.user.username %>
-    <br />
-    <b>Created at: </b>
-    <%= comment.created_at %>
-    <br />
-    <%= link_to 'Destroy', admin_post_comment_path(post), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  <b>Content: </b>
+  <%= comment.content %>
+  <b>User:</b>
+  <%= comment.user.username %>
+  <br />
+  <b>Created at: </b>
+  <%= comment.created_at %>
+  <br />
+  <%= link_to 'Destroy', admin_post_comment_path(post), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
   <% end %>
 
 </div>
 
-
 <b>Group: </b></br>
 <%= collection_select(:post, :user_id, Group.all, :id, :name) %>
-
-
 
 <div>
   <%= form.submit %>
@@ -70,7 +64,7 @@
 <% end %>
 
 <%= search_form_for @q, url: edit_admin_post_path(params[:id]), remote: true do |f| %>
-  <%= f.label :user_username_cont, 'User Name' %>
-  <%= f.search_field :user_username_cont %>
-  <%= f.submit %>
+<%= f.label :user_username_cont, 'User Name' %>
+<%= f.search_field :user_username_cont %>
+<%= f.submit %>
 <% end %>

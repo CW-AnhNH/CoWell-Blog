@@ -5,18 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-<<<<<<< HEAD
-(1..10).each do |id|
-    username = Faker::Esport.player
-    last_name = Faker::Name.unique.name
-=======
 
 (1..10).each do |id|
     username = Faker::Esport.player
     family_name = Faker::Name.unique.name
     last_name = Faker::Name.unique.name
     birthday = Faker::Date.birthday(min_age: 18, max_age: 65)
->>>>>>> c37e6b454a3cb9e23eb3f75ce1504dfe1237f6fb
     email = Faker::Internet.unique.email
     comment = Faker::Lorem.sentence(word_count: 3)
     post_title = Faker::Coffee.blend_name

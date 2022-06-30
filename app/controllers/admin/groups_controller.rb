@@ -19,12 +19,11 @@ module Admin
 
     def create
       @group = current_user.groups.build(group_params)
-      respond_to do |_format|
-        if @group.save
-          redirect_to group_url(@group), notice: 'Group was successfully created.'
-        else
-          render :new
-        end
+
+      if @group.save
+        redirect_to group_url(@group), notice: 'Group was successfully created.'
+      else
+        render :new
       end
     end
 

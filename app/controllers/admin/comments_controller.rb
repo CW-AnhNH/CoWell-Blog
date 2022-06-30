@@ -41,10 +41,7 @@ module Admin
 
     def destroy
       @comment.destroy
-
-      respond_to do |_format|
-        redirect_to comments_url, notice: 'Comment was successfully destroyed.'
-      end
+      redirect_to comments_url, notice: 'Comment was successfully destroyed.'
     end
 
     private
