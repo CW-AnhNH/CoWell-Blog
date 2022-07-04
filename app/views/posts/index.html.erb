@@ -40,7 +40,7 @@
         </div>
             <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
             <h4 class="g-color-gray-dark-v4 g-font-size-18"><%= post.user.username %></h4>
-            <span class="g-color-gray-dark-v4 g-font-size-12"><%= post.created_at %></span>
+            <span class="g-color-gray-dark-v4 g-font-size-12"><%= time_ago_in_words(post.created_at) %></span>
               <div class="g-mb-15">
                 <h3 class="h3 g-color-gray-dark-v1 mb-0"><%= post.title %></h3>
               </div>
@@ -67,3 +67,4 @@
 </div>
 <% end %>
 </div>
+<%= paginate @posts %>
