@@ -1,6 +1,5 @@
-class GroupsController < ApplicationController
+# frozen_string_literal: true
 
-    def index
-    end
-    
+class GroupsController < ApplicationController
+  def index; end
 end

@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :get_user, only: %i[show follow unfollow]
   def index
     @users = User.where.not(admin: true)
   end
 
-  def show
-  end
+  def show; end
 
   def follow
     NotificationMailer.followed_email(@user).deliver
