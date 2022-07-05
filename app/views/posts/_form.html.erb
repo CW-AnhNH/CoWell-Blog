@@ -25,6 +25,11 @@
     <%= form.radio_button :privacy, :private , :required => true %>
     <%= form.label :Private %>
     </div>
+    <b>Group: </b></br>
+    <select class="form-select col-md-4">
+      <option selected>Choose Group</option>
+      <option value <%= collection_select(:post, :user_id, Group.all, :id, :name) %> </option>
+    </select>
 
     <div class="form-group col-md-4 file-field">
       <%= form.label :image %><br />
