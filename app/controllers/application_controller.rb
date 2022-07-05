@@ -28,13 +28,10 @@ class ApplicationController < ActionController::Base
   #     @post = Post.find(params[:post_id])
   # end
 
-<<<<<<< HEAD
   def get_user
     @user = User.find(params[:id])
   end
 
-=======
->>>>>>> develop
   def record_not_found
     render plain: '404 not found', status: 404
   end
