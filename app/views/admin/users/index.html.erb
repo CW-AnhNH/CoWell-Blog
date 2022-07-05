@@ -1,2 +1,19 @@
 <h1>Admin::Users#index</h1>
 <p>Find me in app/views/admin/users/index.html.erb</p>
+<table class="table table-bordered border-primary">
+     <thead>
+      <%= render 'tableHeader' %>
+     </thead>
+
+     <tbody>
+      <%= render 'table', user: @user %>
+     </tbody>
+</table>
+
+   <%= paginate @users %>
+
+   <%= render 'search' %>
+
+<%= link_to 'Create new user', new_admin_user_path %>
+
+<%= link_to "Logout", destroy_user_session_path, "data-turbo-method": :delete %>

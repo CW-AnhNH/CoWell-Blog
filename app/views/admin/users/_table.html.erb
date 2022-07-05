@@ -1,0 +1,18 @@
+<% @users.each do |user| %>
+    <tr>
+    <td>
+    <% if user.avatar.present? %>
+       <%= image_tag(user.avatar, width: 80) %>
+     <% end %>
+   </td>
+      <td><%= user.username %></td>
+      <td><%= user.email %></td>
+      <td><%= user.birthday %></td>
+      <td><%= user.posts.count %></td>
+      <td><%= user.groups.count %></td>
+      <td><%= user.status %></td>
+      <td><%= link_to 'Show', admin_user_path(user) %></td>
+      <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
+      <td><%= link_to "Destroy", admin_user_path(user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
+    </tr>
+  <% end %>

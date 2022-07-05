@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
   namespace :admin do
-    get 'dashboard/index'
-    get 'users/index'
+    resources :users do
+      collection do
+        get 'search'
+      end
+      
     # routes for admin
+    end
+    resources :posts
+    get 'dashboard/' => 'dashboard#index'
   end
   resources :posts
   resources :users

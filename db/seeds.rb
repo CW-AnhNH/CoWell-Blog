@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
 (1..10).each do |id|
     username = Faker::Esport.player
     family_name = Faker::Name.unique.name
