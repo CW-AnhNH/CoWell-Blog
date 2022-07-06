@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   resources :posts
   resources :users
   resources :groups
+
+  post '/users/:id/follow', to: "users#follow", as: "follow_user"
+  post '/users/:id/unfollow', to: "users#unfollow", as: "unfollow_user"
+  
   root 'posts#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

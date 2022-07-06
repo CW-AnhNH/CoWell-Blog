@@ -6,7 +6,15 @@
         <% else %>
         <%= image_tag "#{ asset_url "default_user.jpg"}", width: 80, class: "img-lg rounded-circle border shadow" %>
         <% end %>
-
+        <div class="col text-center mt-3">
+          <% if @user.id == current_user.id %>
+            <h5></h5>
+          <% elsif current_user.followeds.include?(@user) %>
+            <h5><%= button_to "Unfollow", unfollow_user_path, class: "btn btn-outline-info", method: "POST" %></h5>
+          <% else %>
+          <h5><%= button_to "Follow", follow_user_path, class: "btn btn-outline-info", method: "POST"  %></h5>
+          <% end %>
+        </div>
       <table class="table table-hover table-sm table-properties">
       <tr v-show="user.username">
         <th>Username</th>
@@ -31,7 +39,6 @@
         <th>Birthday</th>
         <td><%= @user.birthday %></td>
       </tr>
-
     </table>
     </div>
   </div>
