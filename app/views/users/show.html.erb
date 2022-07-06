@@ -1,0 +1,75 @@
+<div id="user" class="container profile">
+  <div class="row">
+    <div class="col text-center mt-3">
+        <% if @user.avatar.present? %>
+          <%= image_tag (@user.avatar), width: 80, class: "img-lg rounded-circle border shadow" %>
+        <% else %>
+        <%= image_tag "#{ asset_url "default_user.jpg"}", width: 80, class: "img-lg rounded-circle border shadow" %>
+        <% end %>
+
+      <table class="table table-hover table-sm table-properties">
+      <tr v-show="user.username">
+        <th>Username</th>
+        <td><%= @user.username %></td>
+      </tr>
+      <tr v-show="user.email">
+        <th>Email</th>
+        <td><%= @user.email %></td>
+      </tr>
+
+      <tr v-show="user.family_name">
+        <th>Family Name</th>
+        <td><%= @user.family_name %></td>
+      </tr>
+
+      <tr v-show="user.last_name">
+        <th>Last Name</th>
+        <td><%= @user.last_name %></td>
+      </tr>
+
+      <tr v-show="user.birthday">
+        <th>Birthday</th>
+        <td><%= @user.birthday %></td>
+      </tr>
+
+    </table>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="public-tab" data-toggle="tab" href="#public" role="tab" aria-controls="public" aria-selected="true">Public</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="private-tab" data-toggle="tab" href="#private" role="tab" aria-controls="private" aria-selected="false">Private</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="false">Pending</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="public" role="tabpanel" aria-labelledby="public-tab">
+          <%= render "publicPosts" %>          
+        </div>
+
+        <% if @user.id == current_user.id %>
+        <div class="tab-pane fade" id="private" role="tabpanel" aria-labelledby="private-tab">
+          <%= render "privatePosts" %>
+        </div>
+
+        <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+          <%= render "pendingPosts" %>
+        </div>
+        <% else %>
+        <div class="tab-pane fade" id="private" role="tabpanel" aria-labelledby="private-tab">
+        </div>
+
+        <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

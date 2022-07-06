@@ -1,0 +1,24 @@
+<% @public_posts.each do |post| %>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="media g-mb-30 media-post">
+                <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+                  <h3 class="h3 g-color-gray-dark-v1 mb-0"><%= post.title %></h3>
+                  <div class="g-mb-15">
+                    <span class="g-color-gray-dark-v4 g-font-size-12"><%= time_ago_in_words(post.created_at) %></span>
+                  </div>
+            
+                  <ul class="list-inline d-sm-flex my-0">
+                    <li class="list-inline-item g-mr-20">
+                      <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                      <i class="fa fa-heart" aria-hidden="true"></i>
+                      <%= post.post_votings.count %>
+                      </a>
+                    </li>
+                  </ul>
+                  <%= link_to 'See more', post_path(post) %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
