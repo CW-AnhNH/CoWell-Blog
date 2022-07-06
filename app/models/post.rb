@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
-  
   has_one_attached :image
 
   paginates_per 10
