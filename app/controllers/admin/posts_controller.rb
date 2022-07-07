@@ -35,7 +35,7 @@ module Admin
       end
     end
 
-		def edit
+    def edit
       @q = @post.comments.ransack(params[:q])
       @comments = @q.result.includes(:user).page(params[:page])
     end

@@ -1,95 +1,19 @@
-<!DOCTYPE html>
-<html>
+<div class="card" style="wwidth=device-width,initial-scale=1"">
+        <div class=" card-body">
+    <h5 class="card-title">Total Users</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Total number of users on this platform</h6>
+    <p class="card-text"> <%= @user.all.count %></p>
+    <a <%= link_to "User List", admin_users_index_path %></a>
 
-<head>
-    <title>CwBlog</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
-    <%= stylesheet_link_tag "https://use.fontawesome.com/releases/v5.15.4/css/all.css"%>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%# this loads Sprockets/Rails asset pipeline %>
-    <%= javascript_importmap_tags %> <%#  this loads JS from importmaps %>
+</div>
+</div>
 
+<div class="card" style="width: 28rem;">
+    <div class="card-body">
+        <h5 class="card-title">Total Groups</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Total number of groups on this platform</h6>
+        <p class="card-text"> <%= @group.all.count %></p>
+        <a <%= link_to "Group List", admin_groups_path %></a>
 
-
-
-
-
-    <!-- <div class="content-body">
-
-        <div class="container-fluid mt-3">
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card gradient-1">
-                        <div class="card-body">
-                            <h3 class="card-title text-black">Products Sold</h3>
-                            <div class="d-inline-block">
-                                <h2 class="text-white">4565</h2>
-                                <p class="text-white mb-0">Jan - March 2019</p>
-                            </div>
-                            <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card gradient-2">
-                        <div class="card-body">
-                            <h3 class="card-title text-white">Net Profit</h3>
-                            <div class="d-inline-block">
-                                <h2 class="text-white">$ 8541</h2>
-                                <p class="text-white mb-0">Jan - March 2019</p>
-                            </div>
-                            <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card gradient-3">
-                        <div class="card-body">
-                            <h3 class="card-title text-white">New Customers</h3>
-                            <div class="d-inline-block">
-                                <h2 class="text-white">4565</h2>
-                                <p class="text-white mb-0">Jan - March 2019</p>
-                            </div>
-                            <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card gradient-4">
-                        <div class="card-body">
-                            <h3 class="card-title text-white">Customer Satisfaction</h3>
-                            <div class="d-inline-block">
-                                <h2 class="text-white">99%</h2>
-                                <p class="text-white mb-0">Jan - March 2019</p>
-                            </div>
-                            <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-    <div class="card" style="width: 28rem;">
-        <div class="card-body">
-            <h5 class="card-title">Total Users</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Total number of users on this platform</h6>
-            <p class="card-text"> <%= @user.all.count %></p>
-            <a href="http://localhost:3000/admin/users" class="card-link">User List</a>
-            
-        </div>
     </div>
-
-    <div class="card" style="width: 28rem;">
-        <div class="card-body">
-            <h5 class="card-title">Total Groups</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Total number of groups on this platform</h6>
-            <p class="card-text"> <%= @group.all.count %></p>
-            <a href="http://localhost:3000/admin/groups" class="card-link">Group list</a>
-            
-        </div>
-    </div>
-</head>
+</div>
