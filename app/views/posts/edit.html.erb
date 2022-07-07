@@ -11,7 +11,7 @@
 
     <div class="form-group col-md-4 field">
         <%= form.label :title %><br>
-        <%= form.text_field :title, class: "form-control", :required => true %>
+        <%= form.text_field :title, class: "form-control" %>
     </div>
     
     <div class="form-group col-md-4 field">
@@ -35,6 +35,7 @@
     <div class="form-group col-md-4 file-field">
       <%= form.label :image %><br />
       <%= form.file_field :image, autocomplete: "image", :id => "image_field", class: "photo_upload form-control" %>
+      <%= form.hidden_field :image, value: form.object.image.signed_id if form.object.image.attached? %>
     </div>
     <div>
         <% if @post.image.present? %>

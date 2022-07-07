@@ -19,8 +19,9 @@ class Post < ApplicationRecord
   scope :public_posts, -> { publics.approveds }
   scope :private_posts, -> { privates.approveds }
   scope :pending_posts, -> { where(status: 'pendings') }
-  scope :top, -> { joins(:post_votings).group(:id).select("posts.*, count(post_votings.id) AS vote_count").order(vote_count: :desc) }
-
+  scope :top, lambda {
+                joins(:post_votings).group(:id).select('posts.*, count(post_votings.id) AS vote_count').order(vote_count: :desc)
+              }
 
   scope :latest, -> { order('created_at DESC') }
 
