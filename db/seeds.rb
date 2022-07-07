@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-(1..10).each do |id|
+(1..30).each do |id|
     username = Faker::Esport.player
     family_name = Faker::Name.unique.name
     last_name = Faker::Name.unique.name

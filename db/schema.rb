@@ -47,6 +47,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_24_082345) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "group_members", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_members_on_group_id"
+    t.index ["user_id"], name: "index_group_members_on_user_id"
+  end
+
   create_table "groups", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -95,6 +105,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_24_082345) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "provider"
+    t.string "uid"
     t.integer "status", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -102,4 +114,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_24_082345) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "group_members", "groups"
+  add_foreign_key "group_members", "users"
 end

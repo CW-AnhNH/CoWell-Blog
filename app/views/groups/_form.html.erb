@@ -1,0 +1,34 @@
+<%= form_with(model: group) do |form| %>
+  <% if group.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+        <% group.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <p>
+    <b>Privacy</b><br />
+    <%= form.radio_button :privacy, 'privates' %> Private<br />
+    <%= form.radio_button :privacy, 'publics' %> Public<br />
+    
+  </p>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

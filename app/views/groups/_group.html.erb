@@ -1,0 +1,30 @@
+<div id="<%= dom_id group %>">
+  <p>
+    <strong>Name:</strong>
+    <%= @group.name %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @group.description %>
+  </p>
+
+  <p>
+    <h2>Posts: <h2>
+    <% @group.posts.all.each do |post| %>
+        <h3><%= post.title %></h3>
+        <p><%= post.content %></p>
+        <br>
+    <% end %>
+  </p>
+
+  <p>
+  <h2>Members: <h2>
+  <% @group.members.each do |member| %>
+      <h3><%= member.username %></h3>
+      <p><%= member.email %></p>
+      <br>
+  <% end %>
+</p>
+
+</div>

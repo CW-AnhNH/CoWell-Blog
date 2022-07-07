@@ -1,4 +1,19 @@
-<h1>Admin::Dashboard#index</h1>
-<p>Find me in app/views/admin/dashboard/index.html.erb</p>
+<div class="card" style="wwidth=device-width,initial-scale=1"">
+        <div class=" card-body">
+    <h5 class="card-title">Total Users</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Total number of users on this platform</h6>
+    <p class="card-text"> <%= @user.all.count %></p>
+    <a <%= link_to "User List", admin_users_index_path %></a>
 
-<%= link_to "Logout", destroy_user_session_path, "data-turbo-method": :delete %>
+</div>
+</div>
+
+<div class="card" style="width: 28rem;">
+    <div class="card-body">
+        <h5 class="card-title">Total Groups</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Total number of groups on this platform</h6>
+        <p class="card-text"> <%= @group.all.count %></p>
+        <a <%= link_to "Group List", admin_groups_path %></a>
+
+    </div>
+</div>
