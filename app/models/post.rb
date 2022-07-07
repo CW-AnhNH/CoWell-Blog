@@ -15,14 +15,13 @@ class Post < ApplicationRecord
   enum :privacy, { publics: 0, privates: 1 }
   enum :status, { pendings: 0, approveds: 1, rejects: 2 }
 
-  scope :public_posts, lambda { where(privacy: 'publics', status: 'approveds') }
-  scope :private_posts, lambda { where(privacy: 'privates', status: 'approveds') }
-  scope :pending_posts, lambda { where(status: 'pendings') }
+  scope :public_posts, -> { where(privacy: 'publics', status: 'approveds') }
+  scope :private_posts, -> { where(privacy: 'privates', status: 'approveds') }
+  scope :pending_posts, -> { where(status: 'pendings') }
 
-  scope :latest, lambda { order("created_at DESC") }
+  scope :latest, -> { order('created_at DESC') }
 
-  scope :week, lambda { where('created_at >= ?', Time.now.advance(weeks: -1)).order("created_at ASC") }
-  scope :month, lambda { where('created_at >= ?', Time.now.advance(months: -1)).order("created_at ASC") }
-  scope :year, lambda { where('created_at >= ?', Time.now.advance(years: -2)).order("created_at ASC") }
-  
+  scope :week, -> { where('created_at >= ?', Time.now.advance(weeks: -1)).order('created_at ASC') }
+  scope :month, -> { where('created_at >= ?', Time.now.advance(months: -1)).order('created_at ASC') }
+  scope :year, -> { where('created_at >= ?', Time.now.advance(years: -2)).order('created_at ASC') }
 end

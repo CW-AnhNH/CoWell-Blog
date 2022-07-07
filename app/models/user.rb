@@ -45,5 +45,4 @@ class User < ApplicationRecord
   end
 
   enum :status, { permit: 0, ban: 1 }
-
 end
