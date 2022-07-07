@@ -9,9 +9,6 @@ Rails.application.routes.draw do
   resources :posts
   resources :groups
 
-  # post '/users/:id/follow', to: "users#follow", as: "follow_user"
-  # post '/users/:id/unfollow', to: "users#unfollow", as: "unfollow_user"
-  
   resources :users  do
     member do
       post :follow
@@ -20,15 +17,13 @@ Rails.application.routes.draw do
   end
   
   root 'posts#index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :groups
 
-  devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks',
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
-  }
-  devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
-  end
+  # devise_for :users, controllers: {
+  #   omniauth_callbacks: 'users/omniauth_callbacks',
+  #   sessions: 'users/sessions',
+  #   registrations: 'users/registrations'
+  # }
+  # devise_scope :user do
+  #   get '/users/sign_out' => 'devise/sessions#destroy'
+  # end
 end
