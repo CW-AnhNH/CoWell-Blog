@@ -1,0 +1,36 @@
+<% @posts.each do |post| %>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="media g-mb-30 media-post">
+                <div class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15">
+                    <%= image_tag post.user.avatar if post.user.avatar.present? %> 
+                </div>
+                <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+                    <h4 class="g-color-gray-dark-v4 g-font-size-18"><%= post.user.username %></h4>
+                    <span class="g-color-gray-dark-v4 g-font-size-12"><%= time_ago_in_words(post.created_at) %></span>
+                    <div class="g-mb-15">
+                        <h3 class="h3 g-color-gray-dark-v1 mb-0"><%= post.title %></h3>
+                    </div>
+                
+                    <p><%= post.content %></p>
+        
+                    <ul class="list-inline d-sm-flex my-0">
+                        <li class="list-inline-item g-mr-20">
+                        <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                        <%= post.post_votings.count %>
+                        </a>
+                        </li>
+                        <li class="list-inline-item g-mr-20">
+                        <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                        <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                        <%= post.comments.count %>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
+<%= paginate @month %>

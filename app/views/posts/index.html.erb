@@ -1,70 +1,62 @@
 <div class="container">
-<div class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <ul class="navbar-nav ml-5 mr-auto mt-4 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Relevant <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Latest</a>
-      </li>
-      <li class="nav-item">
-      <a class="nav-link" href="#">Top</a>
-    </li>
-    </ul>
-    <ul class="navbar-nav my-2 my-lg-0">
-    <li class="nav-item active">
-    <a class="nav-link" href="#">Week <span class="sr-only">(current)</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Month</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Year</a>
-  </li>
-  <li class="nav-item">
-  <a class="nav-link" href="#">Infinity</a>
-</li>
-    </ul>
+  <div class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <ul class="navbar-nav nav nav-tabs ml-5 mr-auto mt-4 mt-lg-0" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="relevant-tab" data-toggle="tab" href="#relevant" role="tab" aria-controls="relevant" aria-selected="true">Relevant</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="latest-tab" data-toggle="tab" href="#latest" role="tab" aria-controls="latest" aria-selected="false">Latest</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="top-tab" data-toggle="tab" href="#top" role="tab" aria-controls="top" aria-selected="false">Top</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav nav nav-tabs my-2 my-lg-0" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link" id="week-tab" data-toggle="tab" href="#week" role="tab" aria-controls="week" aria-selected="false">Week</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="month-tab" data-toggle="tab" href="#month" role="tab" aria-controls="month" aria-selected="false">Month</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="year-tab" data-toggle="tab" href="#year" role="tab" aria-controls="year" aria-selected="false">Year</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="infinity-tab" data-toggle="tab" href="#infinity" role="tab" aria-controls="infinity" aria-selected="false">Infinity</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="relevant" role="tabpanel" aria-labelledby="relevant-tab">
+      <%= render "relevant" %>
+    </div>
+
+    <div class="tab-pane fade" id="latest" role="tabpanel" aria-labelledby="latest-tab">
+      <%= render "latest" %>
+    </div>
+    <div class="tab-pane fade" id="top" role="tabpanel" aria-labelledby="top-tab">
+      <%= render "top" %>
+    </div>
+
+    <div class="tab-pane fade" id="week" role="tabpanel" aria-labelledby="week-tab">
+      <%= render "week" %>
+    </div>
+
+    <div class="tab-pane fade" id="month" role="tabpanel" aria-labelledby="month-tab">
+      <%= render "month" %>
+    </div>
+
+    <div class="tab-pane fade" id="year" role="tabpanel" aria-labelledby="year-tab">
+      <%= render "year" %>
+    </div>
+    <div class="tab-pane fade" id="infinity" role="tabpanel" aria-labelledby="infinity-tab">
+      <%= render "infinity" %>
+    </div>
   </div>
 </div>
-<% @posts.each do |post| %>
-<div class="row">
-    <div class="col-md-8">
-        <div class="media g-mb-30 media-post">
-        <div class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15">
-          <%= image_tag post.user.avatar if post.user.avatar.present? %> 
-        </div>
-            <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
-            <h4 class="g-color-gray-dark-v4 g-font-size-18"><%= post.user.username %></h4>
-            <span class="g-color-gray-dark-v4 g-font-size-12"><%= time_ago_in_words(post.created_at) %></span>
-              <div class="g-mb-15">
-                <h3 class="h3 g-color-gray-dark-v1 mb-0"><%= post.title %></h3>
-              </div>
-        
-              <p><%= post.content %></p>
-        
-              <ul class="list-inline d-sm-flex my-0">
-                <li class="list-inline-item g-mr-20">
-                  <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-                  <i class="fa fa-heart" aria-hidden="true"></i>
-                  <%= post.post_votings.count %>
-                  </a>
-                </li>
-                <li class="list-inline-item g-mr-20">
-                  <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                  <%= post.comments.count %>
-                  </a>
-                </li>
-              </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<% end %>
-</div>
-<%= paginate @posts %>

@@ -7,9 +7,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @public_posts = @user.posts.where(privacy: 'publics', status: 'approveds')
-    @private_posts = @user.posts.where(privacy: 'privates', status: 'approveds')
-    @pending_posts = @user.posts.where(status: 'pendings')
+    @public_posts = @user.posts.public_posts
+    @private_posts = @user.posts.private_posts
+    @pending_posts = @user.posts.pending_posts
   end
 
   def follow
