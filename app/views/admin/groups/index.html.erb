@@ -1,0 +1,60 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Groups</h1>
+<%= paginate @groups %>
+
+<%= search_form_for @q, url:admin_groups_path, remote: true do |f| %>
+  <%= f.label :name_cont, 'Group Name' %>
+  <%= f.search_field :name_cont %>
+  <%= f.label :description_cont, 'Group Desc' %>
+  <%= f.search_field :description_cont %>
+  <%= f.label :user_username_cont, 'User Name' %>
+  <%= f.search_field :user_username_cont %>
+  <%= f.check_box :privacy_in, { multiple: true }, 0, '' %>
+  <%= f.label :privacy, 'Public' %>
+  <%= f.check_box :privacy_in, { multiple: true }, 1, '' %>
+  <%= f.label :privacy, 'Private' %>
+  <%= f.submit %>
+<% end %>
+
+<table id="group_list_table" class="table-success" cellspacing="0" role="grid" aria-describedby="list_group_table_info">
+  <thead>
+    <tr>
+      <th>Group Name</th>
+      <th>Created User's Name</th>
+      <th>Description</th>
+      <th>Privacy</th>
+      <th>Created At</th>
+      <th>Total Members</th>
+      <th>Total Posts</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr style="white-space: initial; overflow: auto">
+        <td><%= group.name %>
+        <td><%= group.user.username %></td>
+        
+        <td style="overflow-wrap: break-word; width:300px;">
+          <% if group.description.size>100 %>
+             <%= group.description.first(100) %>
+             <%= "..." %>
+            <% else %>
+              <%= group.description %>
+            <% end %>
+        </td>
+        <td>
+          <%= group.privacy %>
+        </td>
+        <td><%= group.created_at %></td>
+        <td><%= group.members.count %></td>
+        <td><%= group.posts.count %></td>
+        <td><%= link_to "Details", admin_group_path(group) %></td>
+        <td><%= link_to "Edit", edit_admin_group_path(group) %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
