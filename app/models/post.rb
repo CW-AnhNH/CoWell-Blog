@@ -20,8 +20,6 @@ class Post < ApplicationRecord
   scope :pending_posts, lambda { where(status: 'pendings') }
 
   scope :latest, lambda { order("created_at DESC") }
-  scope :relevant, lambda { order("created_at DESC") }
-  scope :top, lambda { order("created_at DESC") }
 
   scope :week, lambda { where('created_at >= ?', Time.now.advance(weeks: -1)).order("created_at ASC") }
   scope :month, lambda { where('created_at >= ?', Time.now.advance(months: -1)).order("created_at ASC") }
