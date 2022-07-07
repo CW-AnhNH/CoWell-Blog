@@ -35,7 +35,6 @@
     <div class="form-group col-md-4 file-field">
       <%= form.label :image %><br />
       <%= form.file_field :image, autocomplete: "image", :id => "image_field", class: "photo_upload form-control" %>
-      <%= form.hidden_field :image, value: form.object.image.signed_id if form.object.image.attached? %>
     </div>
     <div>
         <% if @post.image.present? %>
