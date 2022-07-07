@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   def index
     @posts = @q.result(distinct: true).page(params[:page])
     @latest = Post.all.latest.page(params[:page])
+    @top = Post.top.page(params[:page])
     @week = Post.all.week.page(params[:page])
     @month = Post.all.month.page(params[:page])
     @year = Post.all.year.page(params[:page])

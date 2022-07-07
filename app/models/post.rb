@@ -15,9 +15,12 @@ class Post < ApplicationRecord
   enum :privacy, { publics: 0, privates: 1 }
   enum :status, { pendings: 0, approveds: 1, rejects: 2 }
 
-  scope :public_posts, -> { where(privacy: 'publics', status: 'approveds') }
-  scope :private_posts, -> { where(privacy: 'privates', status: 'approveds') }
+  # scope :public_posts, -> { where(privacy: 'publics', status: 'approveds') }
+  scope :public_posts, -> { publics.approveds }
+  scope :private_posts, -> { privates.approveds }
   scope :pending_posts, -> { where(status: 'pendings') }
+  scope :top, -> { joins(:post_votings).group(:id).select("posts.*, count(post_votings.id) AS vote_count").order(vote_count: :desc) }
+
 
   scope :latest, -> { order('created_at DESC') }
 
