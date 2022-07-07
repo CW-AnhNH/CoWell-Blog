@@ -1,32 +1,26 @@
 Rails.application.routes.draw do
+  devise_for :users
   namespace :admin do
-    get '/dashboard', to: 'dashboard#index'
-    get 'users/index'
+    resources :users
     resources :groups
     resources :posts do
       resources :comments
     end
-    
-    resources :users do
-      collection do
-        get 'search'
-      end
-    end 
     # routes for admin
-    resources :posts
     get 'dashboard/' => 'dashboard#index'
+    get 'users/index'
+  end
+  resources :posts
+  resources :groups
+
+  resources :users  do
+    member do
+      post :follow
+      post :unfollow
+    end
   end
   
-  resources :groups
- 
-  root 'pages#home'
+  root 'posts#index'
 
-  devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks',
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
-  }
-  devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
-  end
+  
 end

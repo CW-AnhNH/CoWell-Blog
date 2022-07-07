@@ -22,4 +22,8 @@
     post = Post.create(title: post_title, content: post_content, user: user, status: [:pendings, :approveds, :rejects].sample, privacy: [:publics, :privates].sample, group: group)
     Comment.create(content: comment, user: user, post: post)
     PostVoting.create(user: user, post:post, vote_status: [true, false].sample)
+    user.avatar.attach(io: File.open(Rails.root.join('app/assets/images/default_user.jpg')),
+                  filename: 'default_user.jpg')
+    post.image.attach(io: File.open(Rails.root.join('app/assets/images/post.jpg')),
+                  filename: 'post.jpg')
 end

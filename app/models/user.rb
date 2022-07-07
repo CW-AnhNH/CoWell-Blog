@@ -8,6 +8,12 @@ class User < ApplicationRecord
   has_many :post_votings, dependent: :destroy
   has_many :posts,  dependent: :destroy
   has_many :groups, dependent: :destroy
+
+  has_many :followed_users, foreign_key: :follower_id, class_name: 'Relationship'
+  has_many :followeds, through: :followed_users
+  has_many :following_users, foreign_key: :followed_id, class_name: 'Relationship'
+  has_many :followers, through: :following_users
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
