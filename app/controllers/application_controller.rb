@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include DeviseTokenAuth::Concerns::SetUserByToken
+  # protect_from_forgery with: :null_session
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
