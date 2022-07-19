@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::Users::RegistrationsController < DeviseTokenAuth::RegistrationsController
-  # skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
   skip_before_action :authenticate_user!
   before_action :set_user_by_token, only: [:destroy, :update]
   before_action :validate_sign_up_params, only: :create

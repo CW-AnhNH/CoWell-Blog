@@ -18,10 +18,8 @@ default: &default
   host: <%= ENV.fetch("DATABASE_HOST") { "localhost" } %>
 
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
-  pool: 5
-  timeout: 5000
+  <<: *default
+  database: cw_blog_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
