@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       sessions: "api/users/sessions",
       confirmations: "api/users/confirmations"
     }
+    resources :posts, only: [:index]
   end
 
   devise_for :users

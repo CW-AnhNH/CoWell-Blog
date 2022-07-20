@@ -28,4 +28,8 @@ class Post < ApplicationRecord
   scope :week, -> { where('created_at >= ?', Time.now.advance(weeks: -1)).order('created_at ASC') }
   scope :month, -> { where('created_at >= ?', Time.now.advance(months: -1)).order('created_at ASC') }
   scope :year, -> { where('created_at >= ?', Time.now.advance(years: -2)).order('created_at ASC') }
+
+  def group_name
+    group&.name || "-"
+  end
 end

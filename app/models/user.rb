@@ -27,6 +27,14 @@ class User < ApplicationRecord
   validates :email, presence: true
   has_many :posts
 
+  def search_posts(title)
+    if title.present?
+      posts.where("posts.title LIKE ?", "%#{title}%")
+    else
+      posts
+    end
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
