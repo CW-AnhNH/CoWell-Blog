@@ -1,5 +1,6 @@
 json.status 200
 json.success true
+json.total_pages @total_pages
 json.data do
   json.array! @posts do |post|
     json.id post.id

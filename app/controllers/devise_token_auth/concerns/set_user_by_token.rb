@@ -26,7 +26,8 @@ module DeviseTokenAuth::Concerns::SetUserByToken
   def set_user_by_token(mapping = nil)
 
     # determine target authentication class
-    rc = resource_class(mapping)
+    @resource.class
+    rc = User
 
     # no default user defined
     return unless rc
@@ -38,7 +39,6 @@ module DeviseTokenAuth::Concerns::SetUserByToken
     authorization_name = DeviseTokenAuth.headers_names[:"authorization"]
     # Read Authorization token and decode it if present
     decoded_authorization_token = decode_bearer_token(request.headers[authorization_name])
-
     # gets values from cookie if configured and present
     parsed_auth_cookie = {}
     if DeviseTokenAuth.cookie_enabled

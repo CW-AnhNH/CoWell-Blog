@@ -10,7 +10,7 @@ gem "rails", "~> 7.0.2", ">= 7.0.2.3"
 gem "sprockets-rails"
 
 # Use mysql as the database for Active Record
-# gem "mysql2", "~> 0.5"
+gem "mysql2", "~> 0.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'bootstrap', '~> 5.1.3'
@@ -89,7 +89,7 @@ gem 'byebug'
 gem "image_processing"
 gem 'cloudinary'
 gem "jquery-rails"
-gem "sqlite3"
+# gem "sqlite3"
 
 # gem "devise_token_auth"
 gem 'devise_token_auth', '>= 1.2.0', git: "https://github.com/lynndylanhurley/devise_token_auth"
